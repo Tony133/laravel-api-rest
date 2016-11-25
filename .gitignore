@@ -7,6 +7,7 @@ composer.phar
 /node_modules
 /public/storage
 /storage/*.key
+/storage
 Homestead.yaml
 Homestead.json
 .env
