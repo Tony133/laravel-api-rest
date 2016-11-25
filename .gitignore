@@ -6,6 +6,7 @@ composer.phar
 /vendor
 /node_modules
 /public/storage
+/storage/*.key
 Homestead.yaml
 Homestead.json
 .env
