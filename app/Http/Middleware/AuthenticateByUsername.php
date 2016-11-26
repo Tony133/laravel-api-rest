@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Authenticate
+class AuthenticateByUsername
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,6 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        Auth::basic("username");
-
-        return $next($request);
+        return Auth::basic('username') ?: $next($request);
     }
 }
