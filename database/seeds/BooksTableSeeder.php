@@ -12,12 +12,13 @@ class BooksTableSeeder extends Seeder
      */
     public function run()
     {
-		Book::create(array(
-            'title' => 'book_title',
-            'price' => '19.99',
-            'author' => 'author_name',
-            'editor' => 'editor_name',
-        ));
-
+        for ($i=0;$i<20;$i++) {
+            Book::create(array(
+                'title' => 'book_title',
+                'price' => '19.99',
+                'author' => 'author_name',
+                'editor' => 'editor_name',
+            ));
+        }
     }
 }
