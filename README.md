@@ -1,5 +1,5 @@
 # Lavarel Api Rest
-Example Api Rest with Lavarel 5 
+Simple example of a REST API with Lavarel 5
 
 ## Install with Composer
 
