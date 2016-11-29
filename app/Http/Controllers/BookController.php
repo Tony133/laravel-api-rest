@@ -11,12 +11,12 @@ class BookController extends Controller
 {
 	public function index()
 	{
-        $book = Book::all();
+        $books = Book::all();
 
         return response()->json(
-			$book,
-			200
-		);
+			$books,
+		    200
+        );
 	}
 
 	public function show($id)
@@ -24,7 +24,7 @@ class BookController extends Controller
 		$book = Book::find($id);
 
 		return response()->json([
-			'book' => $book->toArray(),
+			$book,
 		],200);
 
 	}
@@ -72,7 +72,6 @@ class BookController extends Controller
         $book->delete();
 
         return response()->json([
-            'error' => false,
             'message' => 'book deleted',
         ],200);
 	}
