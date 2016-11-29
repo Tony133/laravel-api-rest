@@ -38,8 +38,8 @@ class BookController extends Controller
 
 	}
 
-	public function store(Request $request)
-	{
+    public function store(Request $request)
+    {
 		$book = new Book;
 		$book->title = $request->input('title');
 		$book->price = $request->input('price');
@@ -48,10 +48,10 @@ class BookController extends Controller
 		$book->save();
 
         return $book;
-	}
+    }
 
-	public function update(Request $request, $id)
-	{
+    public function update(Request $request, $id)
+    {
         if (!$id) {
             throw new HttpException(400, "Invalid id");
         }
@@ -77,9 +77,9 @@ class BookController extends Controller
         $book->save();
 
         return $book;
-	}
+    }
 
-	public function destroy($id)
+    public function destroy($id)
     {
         if (!$id) {
             throw new HttpException(400, "Invalid id");
@@ -91,5 +91,5 @@ class BookController extends Controller
         return response()->json([
             'message' => 'book deleted',
         ],200);
-	}
+    }
 }
