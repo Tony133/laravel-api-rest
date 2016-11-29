@@ -39,7 +39,6 @@ class BookController extends Controller
 		$book->save();
 
         return $book;
-		//return respose()->json([$book], 200);
 	}
 
 	public function update(Request $request, $id)
@@ -61,12 +60,10 @@ class BookController extends Controller
         if ($request->has('editor')) {
             $book->editor = $request->input('editor');
         }
+
         $book->save();
 
         return $book;
-
-		//return respose()->json([$book], 200);
-
 	}
 
 	public function destroy($id)
@@ -74,7 +71,6 @@ class BookController extends Controller
 		$book = Book::find($id);
         $book->delete();
 
-        //return $book;
         return response()->json([
             'error' => false,
             'message' => 'book deleted',
