@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Book;
 
 class BookController extends Controller
@@ -12,6 +13,10 @@ class BookController extends Controller
 	public function index()
 	{
         $books = Book::all();
+
+        if (!$books) {
+            throw new HttpException(400, "Invalid data");
+        }
 
         return response()->json(
 			$books,
@@ -21,7 +26,11 @@ class BookController extends Controller
 
 	public function show($id)
 	{
-		$book = Book::find($id);
+        if (!$id) {
+           throw new HttpException(400, "Invalid id");
+        }
+
+        $book = Book::find($id);
 
 		return response()->json([
 			$book,
@@ -43,7 +52,11 @@ class BookController extends Controller
 
 	public function update(Request $request, $id)
 	{
-		$book = Book::find($id);
+        if (!$id) {
+            throw new HttpException(400, "Invalid id");
+        }
+
+        $book = Book::find($id);
 
         if ($request->has('title')) {
             $book->title = $request->input('title');
@@ -67,7 +80,11 @@ class BookController extends Controller
 	}
 
 	public function destroy($id)
-	{
+    {
+        if (!$id) {
+            throw new HttpException(400, "Invalid id");
+        }
+
 		$book = Book::find($id);
         $book->delete();
 
