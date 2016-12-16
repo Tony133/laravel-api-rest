@@ -10,8 +10,8 @@ use App\Book;
 
 class BookController extends Controller
 {
-	public function index()
-  	{
+    public function index()
+    {
         $books = Book::all();
 
         if (!$books) {
@@ -19,10 +19,10 @@ class BookController extends Controller
         }
 
         return response()->json(
-			$books,
-		    200
+            $books,
+            200
         );
-	}
+    }
 
 	public function show($id)
 	{
