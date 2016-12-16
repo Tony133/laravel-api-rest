@@ -85,7 +85,7 @@ class BookController extends Controller
             throw new HttpException(400, "Invalid id");
         }
 
-		$book = Book::find($id);
+        $book = Book::find($id);
         $book->delete();
 
         return response()->json([
