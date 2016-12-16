@@ -1,5 +1,5 @@
-# Lavarel Api Rest
-Simple example of a REST API with Lavarel 5.3
+# Laravel Api Rest
+Simple example of a REST API with Laravel 5.3
 
 ## Install with Composer
 
