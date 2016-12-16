@@ -34,7 +34,7 @@ class BookController extends Controller
 
         return response()->json([
             $book,
-        ],200);
+        ], 200);
 
     }
 
@@ -90,6 +90,6 @@ class BookController extends Controller
 
         return response()->json([
             'message' => 'book deleted',
-        ],200);
+        ], 200);
     }
 }
