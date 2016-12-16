@@ -24,28 +24,28 @@ class BookController extends Controller
         );
     }
 
-	public function show($id)
-	{
+    public function show($id)
+    {
         if (!$id) {
            throw new HttpException(400, "Invalid id");
         }
 
         $book = Book::find($id);
 
-		return response()->json([
-			$book,
-		],200);
+        return response()->json([
+            $book,
+        ],200);
 
-	}
+    }
 
     public function store(Request $request)
     {
-		$book = new Book;
-		$book->title = $request->input('title');
-		$book->price = $request->input('price');
-		$book->author = $request->input('author');
-		$book->editor = $request->input('editor');
-		$book->save();
+        $book = new Book;
+        $book->title = $request->input('title');
+        $book->price = $request->input('price');
+        $book->author = $request->input('author');
+        $book->editor = $request->input('editor');
+        $book->save();
 
         return $book;
     }
