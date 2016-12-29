@@ -45,9 +45,12 @@ class BookController extends Controller
         $book->price = $request->input('price');
         $book->author = $request->input('author');
         $book->editor = $request->input('editor');
-        $book->save();
 
-        return $book;
+        if ($book->save()) {
+            return $book;
+        }
+
+        throw new HttpException(400, "Invalid data");
     }
 
     public function update(Request $request, $id)
@@ -57,26 +60,16 @@ class BookController extends Controller
         }
 
         $book = Book::find($id);
+        $book->title = $request->input('title');
+        $book->price = $request->input('price');
+        $book->author = $request->input('author');
+        $book->editor = $request->input('editor');
 
-        if ($request->has('title')) {
-            $book->title = $request->input('title');
+        if ($book->save()) {
+            return $book;
         }
 
-        if ($request->has('price')) {
-            $book->price = $request->input('price');
-        }
-
-        if ($request->has('author')) {
-            $book->author = $request->input('author');
-        }
-
-        if ($request->has('editor')) {
-            $book->editor = $request->input('editor');
-        }
-
-        $book->save();
-
-        return $book;
+        throw new HttpException(400, "Invalid data");
     }
 
     public function destroy($id)
