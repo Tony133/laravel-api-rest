@@ -12,7 +12,7 @@ class BookController extends Controller
 {
     public function index()
     {
-        $books = Book::all();
+        $books = Book::paginate(10);
 
         if (!$books) {
             throw new HttpException(400, "Invalid data");
