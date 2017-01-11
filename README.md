@@ -18,6 +18,12 @@ Simple example of a REST API with Laravel 5.3
     $ curl -H 'content-type: application/json' -v -X DELETE http://localhost:8000/api/books/:id
 ```
 
+## Pagination with Curl
+
+```
+    $ curl -H 'content-type: application/json' -v -X GET http://localhost:8000/api/books?page=:number_page  -H 'Authorization:Basic username:password or email:password'
+```
+
 ## User Authentication with Curl 
 
 ```
