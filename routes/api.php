@@ -19,8 +19,8 @@ Route::get('/user', function (Request $request) {
 
 Route::group(['middleware' => 'auth.basic'], function () {
     Route::get('/api/books', 'BookController@index');
-    Route::get('/api/book/{id}', 'BookController@show');
-    Route::post('/api/book', 'BookController@store');
-    Route::put('/api/book/{id}', 'BookController@update');
-    Route::delete('/api/book/{id}', 'BookController@destroy');
+    Route::get('/api/books/{id}', 'BookController@show');
+    Route::post('/api/books', 'BookController@store');
+    Route::put('/api/books/{id}', 'BookController@update');
+    Route::delete('/api/books/{id}', 'BookController@destroy');
 });

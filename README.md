@@ -1,5 +1,5 @@
 # Laravel Api Rest
-Simple example of a REST API with Laravel 5.3
+Simple example of a REST API with Laravel 5.4
 
 ## Install with Composer
 

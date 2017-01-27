@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'tony',
             'username' => 'tony_admin',
 			'password' => Hash::make('admin'),
-            'email' => 'tony_admin@lavarel.com'
+            'email' => 'tony_admin@laravel.com'
         ));
 
     }
