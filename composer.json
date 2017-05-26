@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "tony133/laravel-api-rest",
+    "description": "Simple example of a REST API with Laravel 5.4",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
