@@ -8,7 +8,7 @@ Simple example of a REST API with Laravel 5.4
 
 ```
     $ curl -s http://getcomposer.org/installer | php
-    $ php composer.phar install
+    $ php composer.phar install or composer.json
 ```
 
 ## Getting with Curl 
