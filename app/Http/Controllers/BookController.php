@@ -18,10 +18,9 @@ class BookController extends Controller
             throw new HttpException(400, "Invalid data");
         }
 
-        return response()->json(
+        return response()->json([
             $books,
-            200
-        );
+        ], 200);
     }
 
     public function show($id)
@@ -53,7 +52,7 @@ class BookController extends Controller
         throw new HttpException(400, "Invalid data");
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Book $book, $id)
     {
         if (!$id) {
             throw new HttpException(400, "Invalid id");
@@ -72,7 +71,7 @@ class BookController extends Controller
         throw new HttpException(400, "Invalid data");
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         if (!$id) {
             throw new HttpException(400, "Invalid id");
@@ -83,6 +82,6 @@ class BookController extends Controller
 
         return response()->json([
             'message' => 'book deleted',
-        ], 200);
+        ], 204);
     }
 }

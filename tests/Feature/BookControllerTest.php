@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Book;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -12,49 +13,57 @@ class BookControllerTest extends TestCase
 {
     use WithoutMiddleware;
 
-    public function testIndex()
+    protected function setUp(): void
     {
-        $response = $this->json('GET', '/api/books');
+        parent::setUp();
+        $this->book = factory(Book::class)->create();
+    }
+
+    public function testListBooks()
+    {
+        $response = $this->json('GET', route('books.index'));
 
         $response->assertStatus(200);
     }
 
-    public function testShow()
+    public function testBookShow()
     {
-        $response = $this->json('GET', '/api/books', ['id' => '1']);
+        $response = $this->json('GET', route('books.show', $this->book->id));
 
         $response->assertStatus(200);
     }
 
-    public function testStore()
+    public function testBookNew()
     {
-        $response = $this->json('POST', '/api/books', [
-                'title' => 'Book PHP',
-                'price' => '19.99',
-                'author' => 'author_test',
-                'editor' => 'editor_test'
-        ]);
+        $data = [
+            'title'  => $this->book->title,
+            'price' => $this->book->price,
+            'author' => $this->book->author,
+            'editor'=> $this->book->editor
+        ];
 
-		$response->assertStatus(200);
+        $this->json('POST', route('books.store'), $data)
+            ->assertStatus(201)
+            ->assertJson($data);
 	}
 
-    public function testUpdate()
+    public function testBookUpdate()
     {
-        $response = $this->json('PUT', '/api/books/1', [
-                'id' => '1',
-                'title' => 'Book PHP Programming',
-                'price' => '29.99',
-                'author' => 'author_test',
-                'editor' => 'editor_test'
-        ]);
+        $data = [
+            'title'  => $this->book->title,
+            'price' => $this->book->price,
+            'author' => $this->book->author,
+            'editor'=> $this->book->editor
+        ];
 
-        $response->assertStatus(200);
+        $this->json('PUT', route('books.update', $this->book->id), $data)
+            ->assertStatus(200)
+            ->assertJson($data);
     }
 
-    public function testDestory()
+    public function testBookDelete()
     {
-        $response = $this->json('DELETE', '/api/books/4', ['id' => '3']);
-
-        $response->assertStatus(200);
+        $this->json('DELETE', route('books.delete', $this->book->id))
+            ->assertStatus(204);
     }
 }
