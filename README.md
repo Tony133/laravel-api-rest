@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Tony133/LaravelApiRest.svg?branch=master)](https://travis-ci.org/Tony133/LaravelApiRest)
 
-Simple example of a REST API with Laravel 6.0 LTS
+Simple example of a REST API with Laravel 7.x
 
 ## Install with Composer
 
@@ -23,12 +23,18 @@ Simple example of a REST API with Laravel 6.0 LTS
    $ php artisan key:generate
 ```
 
-## Getting with Curl 
+## Run migrations and seeds
 
 ```
-    $ curl -H 'content-type: application/json' -v -X GET http://127.0.0.1:8000/api/books 
+   $ php artisan migrate --seed
+```
+
+## Getting with Curl
+
+```
+    $ curl -H 'content-type: application/json' -v -X GET http://127.0.0.1:8000/api/books
     $ curl -H 'content-type: application/json' -v -X GET http://127.0.0.1:8000/api/books/:id
-    $ curl -H 'content-type: application/json' -v -X POST -d '{"title":"Foo bar","price":"19.99","author":"Foo author","editor":"Foo editor"}' http://127.0.0.1:8000/api/books 
+    $ curl -H 'content-type: application/json' -v -X POST -d '{"title":"Foo bar","price":"19.99","author":"Foo author","editor":"Foo editor"}' http://127.0.0.1:8000/api/books
     $ curl -H 'content-type: application/json' -v -X PUT -d '{"title":"Foo bar","price":"19.99","author":"Foo author","editor":"Foo editor"}' http://127.0.0.1:8000/api/books/:id
     $ curl -H 'content-type: application/json' -v -X DELETE http://127.0.0.1:8000/api/books/:id
 ```
@@ -39,8 +45,14 @@ Simple example of a REST API with Laravel 6.0 LTS
     $ curl -H 'content-type: application/json' -v -X GET http://127.0.0.1:8000/api/books?page=:number_page  -H 'Authorization:Basic username:password or email:password'
 ```
 
-## User Authentication with Curl 
+## User Authentication with Curl with middleware auth.basic.username
 
 ```
-    $ curl -H 'content-type: application/json' -v -X GET http://127.0.0.1:8000/api/books  -H 'Authorization:Basic username:password or email:password' 
+    $ curl -H 'content-type: application/json' -v -X GET http://127.0.0.1:8000/api/books  -H 'Authorization:Basic username:password'
+```
+
+## User Authentication with Curl using middleware auth.basic
+
+```
+    $ curl -H 'content-type: application/json' -v -X GET http://127.0.0.1:8000/api/books  -H 'Authorization:Basic email:password'
 ```

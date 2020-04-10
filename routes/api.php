@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth.basic'], function () {
-    Route::get('/books', 'BookController@index')->name('books.index');
-    Route::get('/books/{id}', 'BookController@show')->name('books.show');
-    Route::post('/books', 'BookController@store')->name('books.store');
-    Route::put('/books/{id}', 'BookController@update')->name('books.update');
-    Route::delete('/books/{id}', 'BookController@delete')->name('books.delete');
+    Route::apiResource('books', 'Api\Books\BooksController');
 });
