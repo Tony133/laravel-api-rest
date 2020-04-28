@@ -1,0 +1,21 @@
+version: '3'
+services:
+  http:
+    build: ./docker/http
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/app
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=

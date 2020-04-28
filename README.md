@@ -10,6 +10,7 @@ Simple example of a REST API with Laravel 7.x
     $ curl -s http://getcomposer.org/installer | php
     $ php composer.phar install or composer install
 ```
+Click [here](docker/README.md) for the setting with docker
 
 ## Set Environment
 
