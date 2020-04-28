@@ -19,3 +19,11 @@ services:
       - MYSQL_DATABASE=laravel
       - MYSQL_ALLOW_EMPTY_PASSWORD=yes
       - MYSQL_ROOT_PASSWORD=
+  swagger:
+    image: swaggerapi/swagger-ui
+    ports:
+      - "8088:8080"
+    volumes:
+      - ./docs/openapi.yaml:/usr/share/nginx/html/openapi.yaml
+    environment:
+      API_URL: openapi.yaml

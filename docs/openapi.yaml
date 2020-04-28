@@ -1,0 +1,257 @@
+openapi: 3.0.0
+info:
+  title: 'Laravel Rest API Example'
+  description: 'This is a Laravel Rest API Example'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8080'
+    description: docker
+paths:
+  /api/books:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: 'App\Http\Controllers\Api\Books\BooksController::index'
+      parameters:
+        -
+          name: page
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: integer
+          example: 2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  books: { type: object, $ref: '#/components/schemas/books' }
+                type: object
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        -
+          basicAuth: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: 'App\Http\Controllers\Api\Books\BooksController::store'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bookData'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  book: { type: object, $ref: '#/components/schemas/book' }
+                type: object
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        -
+          basicAuth: []
+  '/api/books/{id}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: 'App\Http\Controllers\Api\Books\BooksController::show'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'book id'
+          required: true
+          schema:
+            type: integer
+          example: 2
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  book: { type: object, $ref: '#/components/schemas/book' }
+                type: object
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        -
+          basicAuth: []
+    put:
+      summary: 'Update the specified resource in storage.'
+      operationId: 'App\Http\Controllers\Api\Books\BooksController::update'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'book id'
+          required: true
+          schema:
+            type: integer
+          example: 2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bookData'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  book: { type: object, $ref: '#/components/schemas/book' }
+                type: object
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        -
+          basicAuth: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: 'App\Http\Controllers\Api\Books\BooksController::destroy'
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'book id'
+          required: true
+          schema:
+            type: integer
+          example: 2
+      responses:
+        '204':
+          description: OK
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { description: 'Remove the specified resource from storage.', type: string, example: 'book deleted' }
+                type: object
+        '401':
+          $ref: '#/components/responses/401'
+      security:
+        -
+          basicAuth: []
+components:
+  schemas:
+    bookData:
+      description: 'book data'
+      properties:
+        title:
+          type: string
+          example: '1Omnis vitae animi ut quod dolorum.'
+        price:
+          type: string
+          example: '84'
+        author:
+          type: string
+          example: 'Camila Heaney'
+        editor:
+          type: string
+          example: 'Jacobi LLC'
+      type: object
+    book:
+      description: 'book entity'
+      type: object
+      allOf:
+        -
+          properties:
+            id:
+              type: integer
+              example: '1'
+          type: object
+        -
+          $ref: '#/components/schemas/bookData'
+        -
+          properties:
+            created_at:
+              type: string
+              example: '2020-04-28T13:59:05.000000Z'
+            updated_at:
+              type: string
+              example: '2020-04-28T13:59:05.000000Z'
+          type: object
+    books:
+      description: 'book list'
+      properties:
+        current_page:
+          description: ''
+          type: integer
+          example: 2
+        data:
+          description: ''
+          type: array
+          items:
+            $ref: '#/components/schemas/book'
+        first_page_url:
+          description: ''
+          type: string
+          example: 'http://localhost:8080/api/books?page=1'
+        from:
+          description: ''
+          type: integer
+          example: 1
+        last_page:
+          description: ''
+          type: integer
+          example: 3
+        last_page_url:
+          description: ''
+          type: string
+          example: 'http://localhost:8080/api/books?page=3'
+        next_page_url:
+          description: ''
+          type: string
+          example: 'http://localhost:8080/api/books?page=3'
+        path:
+          description: ''
+          type: string
+          example: 'http://localhost:8080/api/books'
+        per_page:
+          description: ''
+          type: integer
+          example: 10
+        prev_page_url:
+          description: ''
+          type: string
+          example: 'http://localhost:8080/api/books?page=1'
+        to:
+          description: ''
+          type: integer
+          example: 20
+        total:
+          description: ''
+          type: integer
+          example: 30
+      type: object
+  responses:
+    '401':
+      description: 'Error: Unauthorized'
+      content:
+        application/json:
+          schema:
+            properties:
+              status:
+                type: string
+                example: error
+              error:
+                type: string
+                example: Unauthenticated
+            type: object
+  securitySchemes:
+    basicAuth:
+      type: http
+      description: 'Input the ID/PW.<br>ID: <b>tony_admin@laravel.com</b><br>PW: <b>admin</b>'
+      name: basicAuth
+      in: header
+      scheme: basic
+      $ref: ''
