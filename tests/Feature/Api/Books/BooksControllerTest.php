@@ -25,7 +25,7 @@ class BooksControllerTest extends TestCase
     public function testBooksIndex()
     {
         $response = $this->json('GET', route('books.index'), [], [], [], [
-            "HTTP_Authorization" => "Basic " . base64_encode($this->user->username . ":" . "password"),
+            "HTTP_Authorization" => "Basic {base64_encode({$this->user->username} ':password')}",
             "PHP_AUTH_USER" => $this->user->username,
             "PHP_AUTH_PW" => "password"
         ])->assertStatus(200);
@@ -34,7 +34,7 @@ class BooksControllerTest extends TestCase
     public function testBookShow()
     {
         $response = $this->json('GET', route('books.show', $this->book), [], [], [], [
-            "HTTP_Authorization" => "Basic " . base64_encode($this->user->username . ":" . "password"),
+            "HTTP_Authorization" => "Basic {base64_encode({$this->user->username} ':password')}",
             "PHP_AUTH_USER" => $this->user->username,
             "PHP_AUTH_PW" => "password"
         ])->assertStatus(200);
@@ -52,7 +52,7 @@ class BooksControllerTest extends TestCase
         ];
 
         $response = $this->json('POST', route('books.store'), $data, [], [], [
-            "HTTP_Authorization" => "Basic " . base64_encode($this->user->username . ":" . "password"),
+            "HTTP_Authorization" => "Basic {base64_encode({$this->user->username} ':password')}",
             "PHP_AUTH_USER" => $this->user->username,
             "PHP_AUTH_PW" => "password"
         ])->assertStatus(201);
@@ -71,7 +71,7 @@ class BooksControllerTest extends TestCase
         ];
 
         $this->json('PUT', route('books.update', $this->book->id), $data, [], [], [
-            "HTTP_Authorization" => "Basic " . base64_encode($this->user->username . ":" . "password"),
+            "HTTP_Authorization" => "Basic {base64_encode({$this->user->username} ':password')}",
             "PHP_AUTH_USER" => $this->user->username,
             "PHP_AUTH_PW" => "password"
         ])->assertStatus(200);
@@ -80,7 +80,7 @@ class BooksControllerTest extends TestCase
     public function testBookDelete()
     {
         $this->json('DELETE', route('books.destroy', $this->book), [], [], [], [
-            "HTTP_Authorization" => "Basic " . base64_encode($this->user->username . ":" . "password"),
+            "HTTP_Authorization" => "Basic {base64_encode({$this->user->username} ':password')}",
             "PHP_AUTH_USER" => $this->user->username,
             "PHP_AUTH_PW" => "password"
         ])->assertStatus(204);
