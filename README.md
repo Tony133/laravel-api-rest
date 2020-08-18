@@ -1,6 +1,6 @@
 # Laravel Api Rest
 
-[![Build Status](https://travis-ci.org/Tony133/LaravelApiRest.svg?branch=master)](https://travis-ci.org/Tony133/LaravelApiRest)
+[![Build Status](https://travis-ci.org/Tony133/laravel-api-rest.svg?branch=master)](https://travis-ci.org/Tony133/laravel-api-rest)
 
 Simple example of a REST API with Laravel 7.x
 
