@@ -7,7 +7,7 @@ use App\Http\Requests\Books\BookRequest;
 use Illuminate\Http\Response;
 use App\Http\Resources\BookResource;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use App\Book;
+use App\Models\Book;
 
 class BooksController extends Controller
 {
@@ -49,6 +49,10 @@ class BooksController extends Controller
     public function show($id)
     {
         $book = Book::findOrfail($id);
+
+        if ($book) {
+            throw new HttpException(400, "ID {$id} not Found");
+        }
 
         return new BookResource($book);
     }

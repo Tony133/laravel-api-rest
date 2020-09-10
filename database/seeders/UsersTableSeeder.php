@@ -1,7 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
-use App\User;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,12 +15,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-		User::create(array(
+		User::create([
             'name' => 'tony',
             'username' => 'tony_admin',
 			'password' => Hash::make('admin'),
             'email' => 'tony_admin@laravel.com'
-        ));
-
+        ]);
     }
 }

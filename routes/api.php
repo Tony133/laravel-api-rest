@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Books\BooksController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'auth.basic'], function () {
-    Route::apiResource('books', 'Api\Books\BooksController');
+    Route::apiResource('books', BooksController::class);
 });

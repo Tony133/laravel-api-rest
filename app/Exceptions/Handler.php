@@ -7,7 +7,6 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
-
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -42,6 +41,16 @@ class Handler extends ExceptionHandler
     public function report(Throwable $exception)
     {
         parent::report($exception);
+    }
+
+    /**
+     * Register the exception handling callbacks for the application.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
     }
 
     /**
