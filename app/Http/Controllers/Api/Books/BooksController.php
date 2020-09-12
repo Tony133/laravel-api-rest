@@ -50,10 +50,6 @@ class BooksController extends Controller
     {
         $book = Book::findOrfail($id);
 
-        if ($book) {
-            throw new HttpException(400, "ID {$id} not Found");
-        }
-
         return new BookResource($book);
     }
 
