@@ -14,11 +14,6 @@ class BooksControllerTest extends TestCase
 {
     use WithoutMiddleware;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
     public function testBooksIndex()
     {
         $user = User::factory()->create();
