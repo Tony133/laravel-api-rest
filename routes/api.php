@@ -15,10 +15,16 @@ use App\Http\Controllers\Api\Books\BooksController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'auth.basic'], function () {
+Route::middleware('auth.basic')->group(function () {
     Route::apiResource('books', BooksController::class);
+});
+
+Route::get('/', function () {
+    return response()->json([
+        'message' => 'This is a simple example of item returned by your APIs. Everyone can see it.'
+    ]);
 });

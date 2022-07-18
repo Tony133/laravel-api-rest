@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Tony133/laravel-api-rest.svg?branch=master)](https://travis-ci.org/Tony133/laravel-api-rest)
 
-Simple example of a REST API with Laravel 8.x
+Simple example of a REST API with Laravel 9.x
 
 ## Install with Composer
 
