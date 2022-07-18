@@ -8,8 +8,7 @@ services:
   - mysql
 
 php:
-  - 7.3
-  - 7.4
+  - 8.0
 
 before_script:
   - cp .env.travis .env

@@ -1,27 +1,27 @@
 {
     "name": "tony133/laravel-api-rest",
     "type": "project",
-    "description": "Simple example of a REST API with Laravel 8.x",
+    "description": "Simple example of a REST API with Laravel 9.x",
     "keywords": [
         "framework",
         "laravel"
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.12",
-        "laravel/tinker": "^2.0"
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.19",
+        "laravel/sanctum": "^2.14.1",
+        "laravel/tinker": "^2.7",
+        "fruitcake/laravel-cors": "^2.0"
     },
     "require-dev": {
-        "facade/ignition": "^2.3.6",
-        "fzaninotto/faker": "^1.9.1",
+        "spatie/laravel-ignition": "^1.0",
+        "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1", 
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10"
     },
     "config": {
         "optimize-autoloader": true,
