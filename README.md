@@ -56,3 +56,19 @@ Simple example of a REST API with Laravel 9.x
 ```
     $ curl -H 'content-type: application/json' -H 'Accept: application/json' -v -X GET http://127.0.0.1:8000/api/books  -H 'Authorization:Basic email:password'
 ```
+
+## Run App in container Docker with Laravel Sail 
+
+```
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v $(pwd):/opt \
+    -w /opt \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
+```
+
+## Run Containers Docker
+```
+  ./vendor/bin/sail up
+```
