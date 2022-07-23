@@ -68,7 +68,7 @@ docker run --rm \
     composer install --ignore-platform-reqs
 ```
 
-## Run Containers Docker
+## Run Start Application with Laravel Sail
 ```
   ./vendor/bin/sail up
 ```
