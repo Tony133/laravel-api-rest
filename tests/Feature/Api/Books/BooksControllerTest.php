@@ -12,6 +12,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class BooksControllerTest extends TestCase
 {
+    use RefreshDatabase;
     use WithoutMiddleware;
 
     public function testBooksIndex()
@@ -28,7 +29,7 @@ class BooksControllerTest extends TestCase
     public function testBookShow()
     {
         $user = User::factory()->create();
-        $book = User::factory()->create();
+        $book = Book::factory()->create();
 
         $this->json('GET', route('books.show', $book->id), [], [], [], [
             "HTTP_Authorization" => "Basic {base64_encode({$user->username} ':password')}",
@@ -58,6 +59,7 @@ class BooksControllerTest extends TestCase
     public function testBookUpdate()
     {
         $user = User::factory()->create();
+        $book = Book::factory()->create();
 
         $data = [
             'id' => 1,
@@ -66,8 +68,7 @@ class BooksControllerTest extends TestCase
             'author' => "author #1 update",
             'editor'=> "editor #1 update",
         ];
-        
-        $this->json('PUT', route('books.update', 1), $data, [], [], [
+        $this->json('PUT', route('books.update', $book->id), $data, [], [], [
             "HTTP_Authorization" => "Basic {base64_encode({$user->username} ':password')}",
             "PHP_AUTH_USER" => $user->username,
             "PHP_AUTH_PW" => "password"
